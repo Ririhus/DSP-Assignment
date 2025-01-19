@@ -1,6 +1,18 @@
-% Frequency domain analysis of the original signal
+% Load the audio file
+[audio, fs] = audioread('audioDSP.wav'); % Load audio signal and sampling frequency
+t = (0:length(audio)-1)/fs; % Time vector
+
+% Plot the original signal in the time domain
+figure;
+plot(t, audio);
+title('Original Audio Signal');
+xlabel('Time (s)');
+ylabel('Amplitude');
+
+% Frequency domain analysis of the original signal 
 nfft = length(audio); % FFT length
-f = (0:nfft-1)*(ws/nfft); % Frequency vector
+f = (0:nfft-1)*(fs/nfft); % Frequency vector using 
+% the correct sampling frequency (fs)
 originalFFT = abs(fft(audio, nfft)); % Magnitude of FFT
 
 % Plot the original signal frequency spectrum
